@@ -1,0 +1,101 @@
+{
+  "segments": {
+    "S1": {
+      "name": "超富裕層",
+      "description": "世帯年収2,000万円以上、経営者・役員・開業医など",
+      "market_size": 18000,
+      "reach_rate": 0.60,
+      "conversion_rate": 0.08,
+      "frequency": 5.0,
+      "retention_rate": 0.60
+    },
+    "S2": {
+      "name": "富裕層",
+      "description": "世帯年収1,200-2,000万円、大企業管理職・士業など",
+      "market_size": 54000,
+      "reach_rate": 0.50,
+      "conversion_rate": 0.05,
+      "frequency": 3.5,
+      "retention_rate": 0.50
+    },
+    "S3": {
+      "name": "準富裕層",
+      "description": "世帯年収800-1,200万円、共働き・中堅企業など",
+      "market_size": 108000,
+      "reach_rate": 0.40,
+      "conversion_rate": 0.03,
+      "frequency": 2.5,
+      "retention_rate": 0.40
+    }
+  },
+  "price_tiers": {
+    "P1": {
+      "name": "〜5千円",
+      "range": "0-5000",
+      "unit_price": 4000,
+      "margin": 0.35,
+      "examples": "単品、小ロット"
+    },
+    "P2": {
+      "name": "5千-1万円",
+      "range": "5000-10000",
+      "unit_price": 7500,
+      "margin": 0.40,
+      "examples": "ギフトセット、中ロット"
+    },
+    "P3": {
+      "name": "1-2万円",
+      "range": "10000-20000",
+      "unit_price": 15000,
+      "margin": 0.45,
+      "examples": "プレミアムセット"
+    },
+    "P4": {
+      "name": "2万円〜",
+      "range": "20000+",
+      "unit_price": 25000,
+      "margin": 0.50,
+      "examples": "超プレミアム、おせち等"
+    }
+  },
+  "price_preference": {
+    "S1": {"P1": 0.10, "P2": 0.30, "P3": 0.40, "P4": 0.20},
+    "S2": {"P1": 0.20, "P2": 0.40, "P3": 0.30, "P4": 0.10},
+    "S3": {"P1": 0.40, "P2": 0.40, "P3": 0.15, "P4": 0.05}
+  },
+  "costs": {
+    "fixed_cost": 5000000,
+    "description": "年間固定費（EC運用、人件費按分など）"
+  },
+  "scenarios": {
+    "A_s1_focus": {
+      "name": "S1特化（超富裕層集中投資）",
+      "reach_rate_override": {"S1": 0.80}
+    },
+    "B_volume": {
+      "name": "S2・S3ボリューム狙い",
+      "reach_rate_override": {"S2": 0.60, "S3": 0.60}
+    },
+    "C_price_shift": {
+      "name": "価格帯シフト（高単価強化）",
+      "price_preference_shift": {
+        "S1": {"P1": -0.05, "P2": -0.05, "P3": 0.05, "P4": 0.05},
+        "S2": {"P1": -0.05, "P2": -0.05, "P3": 0.05, "P4": 0.05},
+        "S3": {"P1": -0.05, "P2": -0.05, "P3": 0.05, "P4": 0.05}
+      }
+    }
+  },
+  "sensitivity": {
+    "parameters": ["reach_rate", "conversion_rate", "frequency", "retention_rate"],
+    "variation": 0.20
+  },
+  "metadata": {
+    "created": "2025-01-04",
+    "source": "フェルミ推定（フェリー利用者36万人ベース）",
+    "notes": [
+      "S1-S3はフェリーユーザー限定（上位50%）",
+      "到達率はフェリー船内+メルマガの複合チャネル",
+      "転換率は上位セグメント向けの楽観的推定"
+    ]
+  }
+}
